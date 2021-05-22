@@ -10,7 +10,7 @@ def ecolian_action():
     # week_position = 5 번째 주
     week_position = 5
     # day_position = 1 번째 요일 (일=1, 월=2, 화=3, 수=4, 목=5, 금=6, 토=7)
-    day_position = 3
+    day_position = 1
 
     global open_flag
 
