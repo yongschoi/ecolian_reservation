@@ -5,7 +5,7 @@ from selenium.webdriver.common.keys import Keys
 from time import sleep
 
 open_flag = False
-    
+        
 def ecolian_action():
     # week_position = 1 번째 주
     week_position = 1
