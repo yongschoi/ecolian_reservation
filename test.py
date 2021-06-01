@@ -1,4 +1,5 @@
-week = 2
-x_path = '//*[@id="contents"]/table/tbody/tr['+str(week+1)+']/td[1]/p'
+import numpy as np 
+array = [(1, 2), (1, 3), (1, 5)]
 
-print(x_path)
+exists = (1, 4) in array
+print(exists)

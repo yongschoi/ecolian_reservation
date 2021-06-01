@@ -10,9 +10,9 @@ from time import sleep
 # 2. 주
 # 3. 요일 
 
-this_month = False # 이번달 선택 True, 이번달이 아니면(다음달) False
-week_position = 1 # week_position = 1 번째 주
-day_position = 5 # day_position = 7 번째 요일 (일=1, 월=2, 화=3, 수=4, 목=5, 금=6, 토=7)
+this_month = True # 이번달 선택 True, 이번달이 아니면(다음달) False
+week_position = 5 # week_position = 5 번째 주
+day_position = 3 # day_position = 3 번째 요일 (1=일, 2=월, 3=화, 4=수, 5=목, 6=금, 7=토)
 #######################################################################################
 
 open_flag = False        
@@ -20,7 +20,7 @@ def ecolian_action():
     global open_flag
 
     options = webdriver.ChromeOptions()
-    options.add_argument('window-size=800,600')
+    options.add_argument('window-size=1200,960')
 
     driver = webdriver.Chrome(executable_path='chromedriver_linux64/chromedriver', options=options)
     driver.implicitly_wait(2)
@@ -50,7 +50,7 @@ def ecolian_action():
         comfirm_link = driver.find_element_by_xpath('//*[@id="rspop_01"]/div[1]/div[3]/div/a[1]')
         comfirm_link.click()
         time_link = driver.find_element_by_xpath('//*[@id="contents"]/table/tbody/tr[2]/td[2]/span')
-        time_link.click() 
+        time_link.click()
         try:
             open_flag = True
             result =driver.switch_to_alert()
