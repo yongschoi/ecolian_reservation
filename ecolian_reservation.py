@@ -31,7 +31,7 @@ def ecolian_action():
     id_input. send_keys('maranta')
 
     pass_input = driver.find_element_by_id('txtPwd')
-    pass_input.send_keys('inno3214')
+    pass_input.send_keys('xxxxx')
 
     login_button = driver.find_element_by_id('btnLogin')
     login_button.send_keys(Keys.RETURN)
