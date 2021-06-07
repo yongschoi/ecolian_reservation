@@ -50,9 +50,14 @@ def ecolian_action():
                 date_link = driver.find_element_by_xpath(date_xpath)
                 print(i, j, date_link.text)
                 if(date_link.text == '[예약가능]' and (i-1, j) not in except_date):
-                    # date_link.click()
-                    # comfirm_link = driver.find_element_by_xpath('//*[@id="rspop_01"]/div[1]/div[3]/div/a[1]')
-                    # comfirm_link.click()
+                    date_link.click()
+                    comfirm_link = driver.find_element_by_xpath('//*[@id="rspop_01"]/div[1]/div[3]/div/a[1]')
+                    comfirm_link.click()
+                    time_link = driver.find_element_by_xpath('//*[@id="contents"]/table/tbody/tr[2]/td[2]/span')
+                    time_link.click()
+                    alert_box = driver.switch_to_alert()
+                    alert_box.accept()
+                    
                     duration = 1  # seconds
                     freq = 440  # Hz
                     os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))

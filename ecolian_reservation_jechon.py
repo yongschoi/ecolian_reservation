@@ -18,12 +18,13 @@ def ecolian_action():
     global open_flag
 
     options = webdriver.ChromeOptions()
-    options.add_argument('window-size=240,200')
+    options.add_argument('window-size=900,1200')
     
     driver = webdriver.Chrome(executable_path='chromedriver_linux64/chromedriver', options=options)
     driver.implicitly_wait(2)
 
-    driver.get(url='https://jc.ecolian.or.kr/asp/ecolian/login.asp')
+    # driver.get(url='https://jc.ecolian.or.kr/asp/ecolian/login.asp')
+    driver.get(url='https://js.ecolian.or.kr:446/asp/ecolian/login.asp')
 
     id_input = driver.find_element_by_id('txtId')
     id_input. send_keys('maranta')
@@ -32,9 +33,7 @@ def ecolian_action():
     pass_input.send_keys('xxxxx')
 
     login_button = driver.find_element_by_id('btnLogin')
-    login_button.send_keys(Keys.RETURN)
-
-    sleep(1)
+    login_button.click()
 
     reserve_link = driver.find_element_by_xpath('//*[@id="navi"]/li[4]/a/img')
     reserve_link.click()
@@ -47,9 +46,14 @@ def ecolian_action():
                 date_link = driver.find_element_by_xpath(date_xpath)
                 print(i, j, date_link.text)
                 if(date_link.text == '[예약가능]' and (i-1, j) not in except_date):
-                    # date_link.click()
-                    # comfirm_link = driver.find_element_by_xpath('//*[@id="rspop_01"]/div[1]/div[3]/div/a[1]')
-                    # comfirm_link.click()
+                    date_link.click()
+                    comfirm_link = driver.find_element_by_xpath('//*[@id="rspop_01"]/div[1]/div[3]/div/a[1]')
+                    comfirm_link.click()
+                    time_link = driver.find_element_by_xpath('//*[@id="contents"]/table/tbody/tr[2]/td[2]/span')
+                    time_link.click()
+                    alert_box = driver.switch_to_alert()
+                    alert_box.accept()
+
                     duration = 1  # seconds
                     freq = 440  # Hz
                     os.system('play -nq -t alsa synth {} sine {}'.format(duration, freq))
